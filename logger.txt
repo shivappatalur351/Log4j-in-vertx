@@ -1,0 +1,38 @@
+Logger:
+step1:
+Dependencies:
+gradle.build.kts to add below dependencies
+
+implementation 'org.apache.logging.log4j:log4j-api'
+    //implementation 'org.apache.logging.log4j:log4j-core'
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.18.0'
+    testImplementation 'org.slf4j:slf4j-api:2.0.0'
+
+step2:
+xml:
+click on main and select directory and choose resources click on enter
+then click on resource and create file name as log4j2.xml
+copy and paste below code
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+
+        <Logger name="com.demo" level="DEBUG" />
+    <Root level="INFO">
+        <AppenderRef ref="Console"/>
+    </Root>
+</Loggers>
+        </Configuration>
+
+step3:
+every class name below and psvm above to paste and refer entire program as logger
+private static final Logger logger= LoggerFactory.getLogger(Hello.class);
